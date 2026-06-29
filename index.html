@@ -5,26 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🩶 Khuti Hawala Rig</title>
     <style>
-        /* ===== GLOBAL RESET & THEME ===== */
+        /* ============================================================
+           KHUTI™ – Proprietary Front-End Interface
+           Copyright (c) 2026 Seliim Ahmed. All rights reserved.
+           Unauthorized use, reproduction, or distribution is strictly prohibited.
+           Email: amit.khanna.1082@gmail.com
+           ============================================================ */
+
+        /* ===== GLOBAL RESET & THEME 🩶💙 ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            --bg-primary: #141414;
-            --bg-secondary: #1e1e1e;
-            --bg-card: #262626;
-            --border-color: #3a3a3a;
-            --text-primary: #d4d4d4;
-            --text-secondary: #888888;
-            --text-accent: #b0b0b0;
-            --gold: #f0b90b;
-            --green-hawala: #6f9e7a;
-            --cyan-hash: #66d9ef;
-            --grey-icon: #9e9e9e;
+            /* 🩶 Light Steel Grey Base */
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a1c;
+            --bg-card: #222224;
+            --border-color: #3a3a3c;
+            --text-primary: #e8e8ea;
+            --text-secondary: #b0bec5;  /* 🩶 Light Steel Grey */
+            --text-accent: #8e9eab;
+
+            /* 💙 Sky Blue Accents */
+            --sky-blue: #81d4fa;
+            --sky-blue-dark: #4fc3f7;
+            --sky-blue-light: #b3e5fc;
+            --sky-blue-glow: #4fc3f755;
+
+            /* Component Colors */
+            --color-onchain: var(--sky-blue);
+            --color-hawala: var(--sky-blue-light);
+            --color-hashrate: var(--sky-blue-dark);
+            --color-block: #90a4ae;
+
             --font-mono: 'Courier New', 'Fira Code', monospace;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
             --radius: 16px;
         }
         body {
@@ -51,10 +68,11 @@
             transition: border-color 0.3s;
         }
         .khuti-card.online {
-            border-color: #4a8c5a;
+            border-color: var(--sky-blue-dark);
+            box-shadow: 0 0 30px var(--sky-blue-glow);
         }
         .khuti-card.offline {
-            border-color: #8c4a4a;
+            border-color: #5a4a4a;
         }
 
         /* ===== HEADER ===== */
@@ -89,22 +107,22 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #4a8c5a;
-            box-shadow: 0 0 12px #4a8c5a88;
+            background: var(--sky-blue-dark);
+            box-shadow: 0 0 12px var(--sky-blue-glow);
             transition: 0.3s;
         }
         .status-dot.offline {
-            background: #8c4a4a;
-            box-shadow: 0 0 12px #8c4a4a88;
+            background: #6a4a4a;
+            box-shadow: 0 0 12px #6a4a4a88;
         }
         .status-dot.sweeping {
-            background: #d4a017;
-            box-shadow: 0 0 20px #d4a017bb;
+            background: var(--sky-blue);
+            box-shadow: 0 0 24px var(--sky-blue-glow);
             animation: pulse 1s infinite;
         }
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.6; }
+            50% { transform: scale(1.4); opacity: 0.6; }
             100% { transform: scale(1); opacity: 1; }
         }
 
@@ -114,7 +132,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 0;
-            border-bottom: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2c;
         }
         .khuti-row:last-of-type {
             border-bottom: none;
@@ -140,15 +158,21 @@
             transition: color 0.2s;
         }
         .khuti-value.address:hover {
-            color: #fff;
+            color: var(--sky-blue);
         }
-        .khuti-value.gold { color: var(--gold); }
-        .khuti-value.hawala { color: var(--green-hawala); }
-        .khuti-value.total { color: #fff; font-size: 22px; }
-        .khuti-value.hashrate { color: var(--cyan-hash); }
-        .khuti-value.block { color: #b8a0d0; }
 
-        /* ===== DIVIDER / SPACER ===== */
+        /* 🩶💙 Color overrides */
+        .khuti-value.sky { color: var(--color-onchain); }         /* 💙 On-Chain */
+        .khuti-value.steel { color: var(--color-hawala); }        /* 🩶 Hawala (Light Steel Blue) */
+        .khuti-value.total {
+            color: #ffffff;
+            font-size: 22px;
+            text-shadow: 0 0 30px var(--sky-blue-glow);
+        }
+        .khuti-value.hashrate { color: var(--color-hashrate); }   /* 💙 Hashrate */
+        .khuti-value.block { color: var(--color-block); }         /* 🩶 Block */
+
+        /* ===== DIVIDER ===== */
         .khuti-divider {
             border-top: 2px solid var(--border-color);
             margin: 8px 0 16px 0;
@@ -156,22 +180,22 @@
 
         /* ===== DIGITAL WATCH ===== */
         .khuti-watch {
-            background: #0d0d0d;
-            border: 1px solid #2a2a2a;
+            background: #0a0a0c;
+            border: 1px solid #2a2a2c;
             border-radius: 10px;
             padding: 14px 20px;
             margin: 18px 0 20px 0;
             text-align: center;
             font-size: 24px;
             font-weight: 700;
-            color: #6f6f6f;
+            color: var(--text-secondary);
             letter-spacing: 4px;
             font-variant-numeric: tabular-nums;
             transition: color 0.3s;
         }
         .khuti-watch.active {
-            color: #8f8;
-            text-shadow: 0 0 20px #4a8c5a44;
+            color: var(--sky-blue);
+            text-shadow: 0 0 24px var(--sky-blue-glow);
         }
 
         /* ===== BUTTONS ===== */
@@ -182,7 +206,7 @@
             margin-top: 8px;
         }
         .khuti-btn {
-            background: #2a2a2a;
+            background: #2a2a2c;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             font-family: var(--font-mono);
@@ -197,51 +221,55 @@
             letter-spacing: 0.5px;
         }
         .khuti-btn:hover {
-            background: #353535;
-            border-color: #5a5a5a;
+            background: #353538;
+            border-color: var(--sky-blue-dark);
+            color: var(--sky-blue);
         }
         .khuti-btn:active {
             transform: scale(0.97);
         }
         .khuti-btn.primary {
-            background: #2a3a2a;
-            border-color: #4a6a4a;
-            color: #b0d0b0;
+            background: #1a2a3a;
+            border-color: var(--sky-blue-dark);
+            color: var(--sky-blue);
         }
         .khuti-btn.primary:hover {
-            background: #3a4a3a;
-            border-color: #5a8a5a;
+            background: #1a3a4a;
+            border-color: var(--sky-blue);
+            box-shadow: 0 0 20px var(--sky-blue-glow);
         }
         .khuti-btn.primary:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
         .khuti-btn.secondary {
             background: #1a1a2a;
             border-color: #3a3a5a;
-            color: #a0a0d0;
+            color: var(--text-secondary);
         }
         .khuti-btn.secondary:hover {
             background: #2a2a3a;
-            border-color: #5a5a8a;
+            border-color: var(--sky-blue-dark);
+            color: var(--sky-blue);
         }
 
-        /* ===== HAWALA TOKEN SECTION ===== */
+        /* ===== HAWALA INPUT ===== */
         .khuti-hawala-input {
             display: flex;
             flex-direction: column;
             gap: 8px;
             margin-top: 12px;
             padding: 12px;
-            background: #111;
+            background: #0e0e10;
             border-radius: 10px;
-            border: 1px dashed #333;
+            border: 1px dashed #3a3a3c;
         }
         .khuti-hawala-input textarea {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #ccc;
+            background: #141416;
+            border: 1px solid #2a2a2c;
+            color: var(--text-primary);
             font-family: var(--font-mono);
             font-size: 12px;
             padding: 10px;
@@ -252,7 +280,8 @@
         }
         .khuti-hawala-input textarea:focus {
             outline: none;
-            border-color: #6f9e7a;
+            border-color: var(--sky-blue-dark);
+            box-shadow: 0 0 12px var(--sky-blue-glow);
         }
         .khuti-hawala-input .btn-row {
             display: flex;
@@ -269,18 +298,21 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .khuti-small-label .icon {
+            color: var(--sky-blue);
+        }
 
-        /* ===== SWEEP LOG ===== */
+        /* ===== LOG ===== */
         .khuti-log {
             margin-top: 16px;
             padding: 10px 12px;
-            background: #0a0a0a;
+            background: #0a0a0c;
             border-radius: 8px;
             max-height: 120px;
             overflow-y: auto;
             font-size: 12px;
-            color: #777;
-            border: 1px solid #1a1a1a;
+            color: var(--text-secondary);
+            border: 1px solid #1a1a1c;
             font-family: var(--font-mono);
             line-height: 1.6;
         }
@@ -288,25 +320,25 @@
             width: 4px;
         }
         .khuti-log::-webkit-scrollbar-track {
-            background: #111;
+            background: #0a0a0c;
         }
         .khuti-log::-webkit-scrollbar-thumb {
-            background: #333;
+            background: var(--sky-blue-dark);
             border-radius: 4px;
         }
         .khuti-log .log-entry {
-            border-bottom: 1px dotted #1a1a1a;
+            border-bottom: 1px dotted #1a1a1c;
             padding: 2px 0;
         }
         .khuti-log .log-entry:last-child {
             border-bottom: none;
         }
         .khuti-log .time {
-            color: #555;
+            color: #4a5a6a;
             margin-right: 8px;
         }
-        .khuti-log .success { color: var(--green-hawala); }
-        .khuti-log .info { color: var(--cyan-hash); }
+        .khuti-log .success { color: var(--sky-blue-light); }
+        .khuti-log .info { color: var(--sky-blue); }
         .khuti-log .error { color: #d47a7a; }
 
         /* ===== RESPONSIVE ===== */
@@ -320,18 +352,18 @@
             .khuti-btn { font-size: 14px; padding: 12px 16px; }
         }
 
-        /* ===== TOAST / NOTIFICATION ===== */
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: #222;
-            color: #ddd;
+            background: #1a1a1c;
+            color: var(--text-secondary);
             padding: 12px 24px;
             border-radius: 30px;
             font-size: 14px;
-            border: 1px solid #444;
+            border: 1px solid var(--sky-blue-dark);
             box-shadow: 0 8px 30px rgba(0,0,0,0.8);
             z-index: 999;
             opacity: 0;
@@ -368,28 +400,28 @@
             <span class="khuti-value address" id="address" title="Click to copy">Loading...</span>
         </div>
 
-        <!-- BALANCES -->
+        <!-- BALANCES (🩶💙 Theme) -->
         <div class="khuti-row">
-            <span class="khuti-label">On‑Chain</span>
-            <span class="khuti-value gold" id="onchain">0.00000000 BTC</span>
+            <span class="khuti-label">💙 On‑Chain</span>
+            <span class="khuti-value sky" id="onchain">0.00000000 BTC</span>
         </div>
         <div class="khuti-row">
-            <span class="khuti-label">Hawala (Pending)</span>
-            <span class="khuti-value hawala" id="hawala">0.00000000 BTC</span>
+            <span class="khuti-label">🩶 Hawala (Pending)</span>
+            <span class="khuti-value steel" id="hawala">0.00000000 BTC</span>
         </div>
         <div class="khuti-divider"></div>
         <div class="khuti-row">
-            <span class="khuti-label" style="font-weight:bold;color:#aaa;">Total Value</span>
+            <span class="khuti-label" style="font-weight:bold;color:var(--text-secondary);">💎 Total Value</span>
             <span class="khuti-value total" id="total">0.00000000 BTC</span>
         </div>
 
         <!-- RIG STATS -->
         <div class="khuti-row">
-            <span class="khuti-label">Block Height</span>
+            <span class="khuti-label">🩶 Block Height</span>
             <span class="khuti-value block" id="block">--</span>
         </div>
         <div class="khuti-row" style="border-bottom: none;">
-            <span class="khuti-label">Sweeper Speed</span>
+            <span class="khuti-label">💙 Sweeper Speed</span>
             <span class="khuti-value hashrate" id="hashrate">0 KH/s</span>
         </div>
 
@@ -402,13 +434,13 @@
             <button class="khuti-btn secondary" id="refreshBtn">🔄 Refresh Dashboard</button>
         </div>
 
-        <!-- HAWALA TOKEN INPUT (Offline Settlement) -->
+        <!-- HAWALA TOKEN INPUT -->
         <div class="khuti-hawala-input">
-            <span class="khuti-small-label">📜 Accept Hawala Token (Paste Below)</span>
+            <span class="khuti-small-label"><span class="icon">📜</span> Accept Hawala Token (Paste Below)</span>
             <textarea id="hawalaTokenInput" placeholder="Paste Base64 Hawala token here..."></textarea>
             <div class="btn-row">
-                <button class="khuti-btn" id="verifyHawalaBtn" style="background:#1a2a1a;border-color:#2a4a2a;">✅ Verify & Accept</button>
-                <button class="khuti-btn" id="clearHawalaBtn" style="background:#2a1a1a;border-color:#4a2a2a;">✖ Clear</button>
+                <button class="khuti-btn" id="verifyHawalaBtn" style="background:#1a2a3a;border-color:var(--sky-blue-dark);color:var(--sky-blue);">✅ Verify & Accept</button>
+                <button class="khuti-btn" id="clearHawalaBtn" style="background:#2a1a1a;border-color:#4a2a2a;color:#b07a7a;">✖ Clear</button>
             </div>
         </div>
 
@@ -449,7 +481,6 @@
 
             // ---- Toast ----
             let toastTimeout = null;
-
             function showToast(msg, duration = 3000) {
                 toastEl.textContent = msg;
                 toastEl.classList.add('show');
@@ -468,7 +499,6 @@
                 entry.innerHTML = `<span class="time">${time}</span><span class="${type}">${message}</span>`;
                 logContainer.appendChild(entry);
                 logContainer.scrollTop = logContainer.scrollHeight;
-                // Keep last 50 entries
                 while (logContainer.children.length > 50) {
                     logContainer.removeChild(logContainer.firstChild);
                 }
@@ -481,7 +511,6 @@
                     navigator.clipboard.writeText(text).then(() => {
                         showToast('🩶 Address copied to clipboard!', 1500);
                     }).catch(() => {
-                        // Fallback
                         const range = document.createRange();
                         range.selectNode(this);
                         window.getSelection().removeAllRanges();
@@ -506,12 +535,9 @@
             async function fetchStatus() {
                 try {
                     const response = await fetch('http://localhost:8080/status');
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}`);
-                    }
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     const data = await response.json();
 
-                    // Update online status
                     if (!isOnline) {
                         isOnline = true;
                         card.classList.remove('offline');
@@ -522,7 +548,6 @@
                         addLog('🩶 Connected to Khuti backend.', 'success');
                     }
 
-                    // Update fields
                     addressEl.textContent = data.address || 'N/A';
                     onchainEl.textContent = (data.balance_onchain || 0).toFixed(8) + ' BTC';
                     hawalaEl.textContent = (data.balance_hawala || 0).toFixed(8) + ' BTC';
@@ -539,7 +564,7 @@
                         statusLabel.textContent = 'Offline';
                         statusDot.className = 'status-dot offline';
                         addLog('⚠️ Lost connection to backend.', 'error');
-                        showToast('⚠️ Backend offline. Check if ./khuti is running.', 4000);
+                        showToast('⚠️ Backend offline. Check ./khuti', 4000);
                     }
                 }
             }
@@ -564,19 +589,15 @@
                     const response = await fetch('http://localhost:8080/sweep', { method: 'POST' });
                     const result = await response.json();
                     if (result.status === 'sweep_started') {
-                        addLog('✅ Sweep thread launched successfully.', 'success');
+                        addLog('✅ Sweep thread launched.', 'success');
                     } else {
-                        addLog('⚠️ Unexpected sweep response: ' + JSON.stringify(result), 'error');
+                        addLog('⚠️ Unexpected: ' + JSON.stringify(result), 'error');
                     }
                 } catch (err) {
                     addLog('❌ Sweep request failed: ' + err.message, 'error');
-                    showToast('❌ Sweep failed to start.', 3000);
+                    showToast('❌ Sweep failed.', 3000);
                 }
 
-                // Keep the sweeping status until we get a new status update (next poll)
-                // We'll reset the button on the next status poll if sweeping is done.
-                // But we don't have a "done" signal, so we rely on the button state.
-                // We'll auto-reset after 5 seconds just in case, but the user can hit refresh.
                 setTimeout(() => {
                     isSweeping = false;
                     sweepBtn.disabled = false;
@@ -588,7 +609,7 @@
                 }, 5000);
             }
 
-            // ---- Verify Hawala Token ----
+            // ---- Verify Hawala ----
             async function verifyHawala() {
                 const token = hawalaInput.value.trim();
                 if (!token) {
@@ -608,33 +629,32 @@
                     });
                     const result = await response.json();
                     if (result.status === 'accepted') {
-                        addLog('✅ Hawala token ACCEPTED! +' + (result.amount || '?') + ' BTC pending.', 'success');
-                        showToast('🩶 Hawala accepted! Balance updated.', 2500);
+                        addLog('✅ Hawala ACCEPTED! +' + (result.amount || '?') + ' BTC pending.', 'success');
+                        showToast('🩶 Hawala accepted!', 2500);
                         hawalaInput.value = '';
-                        fetchStatus(); // refresh immediately
+                        fetchStatus();
                     } else {
-                        addLog('❌ Hawala rejected: ' + (result.reason || 'invalid signature'), 'error');
+                        addLog('❌ Hawala rejected: ' + (result.reason || 'invalid'), 'error');
                         showToast('❌ Invalid Hawala token.', 3000);
                     }
                 } catch (err) {
                     addLog('❌ Hawala verify error: ' + err.message, 'error');
-                    showToast('⚠️ Could not reach backend.', 2500);
+                    showToast('⚠️ Cannot reach backend.', 2500);
                 }
             }
 
-            // ---- Clear Hawala Input ----
             function clearHawalaInput() {
                 hawalaInput.value = '';
                 showToast('🧹 Hawala input cleared.', 1200);
             }
 
-            // ---- Polling loop (every 2 seconds) ----
+            // ---- Polling ----
             async function pollLoop() {
                 await fetchStatus();
                 setTimeout(pollLoop, 2000);
             }
 
-            // ---- Event Listeners ----
+            // ---- Events ----
             sweepBtn.addEventListener('click', startSweep);
             refreshBtn.addEventListener('click', function() {
                 fetchStatus();
@@ -643,17 +663,16 @@
             verifyHawalaBtn.addEventListener('click', verifyHawala);
             clearHawalaBtn.addEventListener('click', clearHawalaInput);
 
-            // ---- Start ----
-            addLog('🩶 Khuti front-end loaded. Polling backend...', 'info');
-            pollLoop();
-
-            // ---- Keyboard shortcut: Enter in hawala textarea triggers verify ----
             hawalaInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     verifyHawala();
                 }
             });
+
+            // ---- Start ----
+            addLog('🩶 Khuti front-end loaded. Polling backend...', 'info');
+            pollLoop();
 
         })();
     </script>
