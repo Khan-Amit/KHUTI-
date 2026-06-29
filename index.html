@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🩶 Khuti Hawala Rig</title>
+    <title>🩶 Khuti – Bank</title>
     <style>
         /* ============================================================
            KHUTI™ – Proprietary Front-End Interface
@@ -49,7 +49,7 @@
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
             padding: 28px 24px;
-            max-width: 700px;
+            max-width: 680px;
             width: 100%;
             box-shadow: var(--shadow);
             transition: border-color 0.3s;
@@ -149,17 +149,28 @@
         .khuti-btn.primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
         .khuti-btn.secondary { background: #1a1a2a; border-color: #3a3a5a; color: var(--text-secondary); }
         .khuti-btn.secondary:hover { background: #2a2a3a; border-color: var(--sky-blue-dark); color: var(--sky-blue); }
-
-        /* ===== HAWALA TRANSFER SECTION ===== */
-        .hawala-section {
-            margin-top: 18px;
-            padding: 16px;
-            background: #0e0e10;
-            border-radius: 12px;
-            border: 1px solid #2a2a2c;
+        .khuti-btn.success {
+            background: #1a2a2a;
+            border-color: #3a6a5a;
+            color: var(--sky-blue-light);
         }
-        .hawala-section-title {
-            font-size: 16px;
+        .khuti-btn.success:hover { background: #1a3a3a; border-color: var(--sky-blue); }
+
+        /* ===== BANK-STYLE HAWALA TRANSFER ===== */
+        .bank-section {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bank-card {
+            background: #0e0e10;
+            border: 1px solid #2a2a2c;
+            border-radius: 12px;
+            padding: 16px 18px;
+        }
+        .bank-card .title {
+            font-size: 14px;
             font-weight: 700;
             color: var(--sky-blue);
             margin-bottom: 12px;
@@ -167,73 +178,88 @@
             align-items: center;
             gap: 8px;
         }
-        .hawala-sub {
-            background: #141416;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            border-left: 3px solid var(--sky-blue-dark);
-        }
-        .hawala-sub:last-child { margin-bottom: 0; }
-        .hawala-sub .sub-label {
+        .bank-card .title .sub {
+            font-weight: 400;
+            color: var(--text-secondary);
             font-size: 12px;
+            margin-left: 4px;
+        }
+        .bank-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .bank-input-group .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .bank-input-group .field label {
+            font-size: 11px;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            display: block;
         }
-        .hawala-input-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
-        .hawala-input-row input {
-            flex: 1;
-            min-width: 120px;
-            background: #1a1a1c;
+        .bank-input-group .field input,
+        .bank-input-group .field textarea {
+            background: #141416;
             border: 1px solid #2a2a2c;
             color: var(--text-primary);
             padding: 10px 12px;
             border-radius: 6px;
             font-family: var(--font-mono);
             font-size: 14px;
+            width: 100%;
         }
-        .hawala-input-row input:focus {
+        .bank-input-group .field input:focus,
+        .bank-input-group .field textarea:focus {
             outline: none;
             border-color: var(--sky-blue-dark);
             box-shadow: 0 0 12px var(--sky-blue-glow);
         }
-        .hawala-input-row .khuti-btn {
-            flex: 0 0 auto;
-            padding: 10px 20px;
-            font-size: 13px;
-            width: auto;
+        .bank-input-group .field textarea {
+            resize: vertical;
+            min-height: 40px;
+            font-size: 12px;
         }
-        .hawala-token-output {
+        .bank-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .bank-actions .khuti-btn {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+        .token-ref {
             background: #0a0a0c;
             border: 1px dashed #3a3a3c;
             border-radius: 6px;
             padding: 8px 12px;
+            margin-top: 10px;
             font-size: 12px;
             color: var(--sky-blue-light);
             word-break: break-all;
-            min-height: 40px;
-            margin-top: 6px;
+            min-height: 30px;
             font-family: var(--font-mono);
-            resize: none;
-            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
-        .hawala-token-output:focus { outline: none; border-color: var(--sky-blue-dark); }
-
-        .khuti-small-label {
-            font-size: 11px;
+        .token-ref span { flex: 1; }
+        .token-ref .copy-btn {
+            background: none;
+            border: none;
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0 4px;
         }
-        .khuti-small-label .icon { color: var(--sky-blue); }
+        .token-ref .copy-btn:hover { color: var(--sky-blue); }
 
         /* ===== LOG ===== */
         .khuti-log {
@@ -267,8 +293,7 @@
             .khuti-value.total { font-size: 18px; }
             .khuti-watch { font-size: 18px; padding: 10px 12px; }
             .khuti-btn { font-size: 14px; padding: 12px 16px; }
-            .hawala-input-row { flex-direction: column; }
-            .hawala-input-row .khuti-btn { width: 100%; }
+            .bank-actions .khuti-btn { min-width: 60px; }
         }
 
         .toast {
@@ -288,6 +313,8 @@
             transition: opacity 0.4s ease;
             pointer-events: none;
             font-family: var(--font-mono);
+            max-width: 90%;
+            text-align: center;
         }
         .toast.show { opacity: 1; }
     </style>
@@ -299,16 +326,16 @@
     <div class="khuti-card" id="khutiCard">
         <!-- HEADER -->
         <div class="khuti-header">
-            <div class="khuti-title">🩶 KHUTI <span>v2.0</span></div>
+            <div class="khuti-title">🩶 KHUTI <span>Bank</span></div>
             <div class="khuti-status">
                 <span id="statusLabel">Online</span>
                 <span class="status-dot" id="statusDot"></span>
             </div>
         </div>
 
-        <!-- ADDRESS -->
+        <!-- MY ADDRESS (Like Account Number) -->
         <div class="khuti-row">
-            <span class="khuti-label">Address</span>
+            <span class="khuti-label">My Address</span>
             <span class="khuti-value address" id="address" title="Click to copy">Loading...</span>
         </div>
 
@@ -323,7 +350,7 @@
         </div>
         <div class="khuti-divider"></div>
         <div class="khuti-row">
-            <span class="khuti-label" style="font-weight:bold;color:var(--text-secondary);">💎 Total Value</span>
+            <span class="khuti-label" style="font-weight:bold;color:var(--text-secondary);">💎 Total Balance</span>
             <span class="khuti-value total" id="total">0.00000000 BTC</span>
         </div>
 
@@ -347,37 +374,54 @@
         </div>
 
         <!-- ========================================================== -->
-        <!-- ===== HAWALA TRANSFER (HUNDI-STYLE SETTLEMENT) ===== -->
+        <!-- ===== BANK-STYLE SEND / RECEIVE (PAY) ===== -->
         <!-- ========================================================== -->
-        <div class="hawala-section">
-            <div class="hawala-section-title">📜 Hawala Transfer (Hundi Settlement)</div>
+        <div class="bank-section">
 
-            <!-- SEND HAWALA (Create Token) -->
-            <div class="hawala-sub">
-                <span class="sub-label">💙 1. Create Token (Send)</span>
-                <div class="hawala-input-row">
-                    <input type="text" id="hawalaReceiver" placeholder="Receiver Address (1...)" style="flex:2;">
-                    <input type="text" id="hawalaAmount" placeholder="Amount (BTC)" style="flex:1;">
-                    <button class="khuti-btn primary" id="generateHawalaBtn" style="flex:0 0 auto;">🔖 Generate</button>
+            <!-- SEND MONEY -->
+            <div class="bank-card">
+                <div class="title">💙 Send Money <span class="sub">(Hawala / Hundi)</span></div>
+                <div class="bank-input-group">
+                    <div class="field">
+                        <label>Pay to (Address)</label>
+                        <input type="text" id="payeeAddress" placeholder="1ReceiverAddress...">
+                    </div>
+                    <div class="field">
+                        <label>Amount (BTC)</label>
+                        <input type="text" id="sendAmount" placeholder="0.00100000">
+                    </div>
                 </div>
-                <textarea class="hawala-token-output" id="hawalaTokenOutput" rows="2" readonly placeholder="Generated Hawala token will appear here..."></textarea>
-                <button class="khuti-btn secondary" id="copyHawalaBtn" style="margin-top:6px; padding:8px; font-size:12px;">📋 Copy Token</button>
+                <div class="bank-actions">
+                    <button class="khuti-btn success" id="sendBtn">💸 Send</button>
+                    <button class="khuti-btn secondary" id="clearSendBtn">✖ Clear</button>
+                </div>
+                <!-- Generated Token Reference -->
+                <div class="token-ref" id="tokenRefContainer">
+                    <span id="tokenRefDisplay">📜 Token will appear here after sending...</span>
+                    <button class="copy-btn" id="copyTokenBtn" title="Copy Token">📋</button>
+                </div>
             </div>
 
-            <!-- RECEIVE HAWALA (Accept Token) -->
-            <div class="hawala-sub">
-                <span class="sub-label">🩶 2. Accept Token (Receive)</span>
-                <textarea id="hawalaTokenInput" rows="2" placeholder="Paste Base64 Hawala token here to accept..."></textarea>
-                <div class="hawala-input-row" style="margin-top:6px;">
-                    <button class="khuti-btn" id="verifyHawalaBtn" style="background:#1a2a3a;border-color:var(--sky-blue-dark);color:var(--sky-blue);">✅ Verify & Accept</button>
-                    <button class="khuti-btn" id="clearHawalaBtn" style="background:#2a1a1a;border-color:#4a2a2a;color:#b07a7a;">✖ Clear</button>
+            <!-- RECEIVE / CLAIM MONEY -->
+            <div class="bank-card">
+                <div class="title">🩶 Receive / Claim <span class="sub">(Accept Hawala)</span></div>
+                <div class="bank-input-group">
+                    <div class="field">
+                        <label>Paste Hawala Token</label>
+                        <textarea id="claimTokenInput" rows="2" placeholder="Paste the token you received here..."></textarea>
+                    </div>
+                </div>
+                <div class="bank-actions">
+                    <button class="khuti-btn primary" id="claimBtn">💰 Claim</button>
+                    <button class="khuti-btn secondary" id="clearClaimBtn">✖ Clear</button>
                 </div>
             </div>
+
         </div>
 
-        <!-- SWEEP LOG -->
+        <!-- SWEEP LOG / TRANSACTION HISTORY -->
         <div class="khuti-log" id="logContainer">
-            <div class="log-entry"><span class="time">🩶</span> Khuti wallet ready. Waiting for commands...</div>
+            <div class="log-entry"><span class="time">🩶</span> Khuti Bank ready. Waiting for transactions...</div>
         </div>
     </div>
 
@@ -401,17 +445,18 @@
             const sweepBtn = document.getElementById('sweepBtn');
             const refreshBtn = document.getElementById('refreshBtn');
 
-            // Hawala Send
-            const generateBtn = document.getElementById('generateHawalaBtn');
-            const hawalaReceiver = document.getElementById('hawalaReceiver');
-            const hawalaAmount = document.getElementById('hawalaAmount');
-            const hawalaTokenOutput = document.getElementById('hawalaTokenOutput');
-            const copyHawalaBtn = document.getElementById('copyHawalaBtn');
+            // Send
+            const payeeAddress = document.getElementById('payeeAddress');
+            const sendAmount = document.getElementById('sendAmount');
+            const sendBtn = document.getElementById('sendBtn');
+            const clearSendBtn = document.getElementById('clearSendBtn');
+            const tokenRefDisplay = document.getElementById('tokenRefDisplay');
+            const copyTokenBtn = document.getElementById('copyTokenBtn');
 
-            // Hawala Receive
-            const verifyHawalaBtn = document.getElementById('verifyHawalaBtn');
-            const clearHawalaBtn = document.getElementById('clearHawalaBtn');
-            const hawalaInput = document.getElementById('hawalaTokenInput');
+            // Claim
+            const claimTokenInput = document.getElementById('claimTokenInput');
+            const claimBtn = document.getElementById('claimBtn');
+            const clearClaimBtn = document.getElementById('clearClaimBtn');
 
             const logContainer = document.getElementById('logContainer');
             const toastEl = document.getElementById('toast');
@@ -419,6 +464,7 @@
             // ---- State ----
             let isSweeping = false;
             let isOnline = false;
+            let lastGeneratedToken = '';
 
             // ---- Toast ----
             let toastTimeout = null;
@@ -448,16 +494,35 @@
                 const text = this.textContent.trim();
                 if (text && text !== 'Loading...') {
                     navigator.clipboard.writeText(text).then(() => {
-                        showToast('🩶 Address copied!', 1500);
+                        showToast('🩶 My Address copied!', 1500);
                     }).catch(() => {
                         const range = document.createRange();
                         range.selectNode(this);
                         window.getSelection().removeAllRanges();
                         window.getSelection().addRange(range);
                         document.execCommand('copy');
-                        showToast('🩶 Address copied!', 1500);
+                        showToast('🩶 My Address copied!', 1500);
                     });
                 }
+            });
+
+            // ---- Copy Token ----
+            copyTokenBtn.addEventListener('click', function() {
+                const token = tokenRefDisplay.textContent;
+                if (!token || token === '📜 Token will appear here after sending...') {
+                    showToast('❌ No token to copy.', 1500);
+                    return;
+                }
+                navigator.clipboard.writeText(token).then(() => {
+                    showToast('📋 Token copied to clipboard!', 1500);
+                }).catch(() => {
+                    const range = document.createRange();
+                    range.selectNode(tokenRefDisplay);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand('copy');
+                    showToast('📋 Token copied!', 1500);
+                });
             });
 
             // ---- Clock ----
@@ -483,8 +548,7 @@
                         card.classList.add('online');
                         statusLabel.textContent = 'Online';
                         statusDot.className = 'status-dot';
-                        if (!isSweeping) statusDot.className = 'status-dot';
-                        addLog('🩶 Connected to Khuti backend.', 'success');
+                        addLog('🩶 Connected to Khuti Bank.', 'success');
                     }
 
                     addressEl.textContent = data.address || 'N/A';
@@ -542,10 +606,10 @@
                 }, 5000);
             }
 
-            // ---- GENERATE HAWALA TOKEN (Send) ----
-            async function generateHawala() {
-                const receiver = hawalaReceiver.value.trim();
-                const amount = parseFloat(hawalaAmount.value.trim());
+            // ---- SEND (Create Hawala Token) ----
+            async function sendMoney() {
+                const receiver = payeeAddress.value.trim();
+                const amount = parseFloat(sendAmount.value.trim());
                 if (!receiver) { showToast('❌ Enter a receiver address.', 2500); return; }
                 if (isNaN(amount) || amount <= 0) { showToast('❌ Enter a valid amount.', 2500); return; }
                 if (!isOnline) { showToast('❌ Backend offline.', 3000); return; }
@@ -558,36 +622,27 @@
                     });
                     const data = await response.json();
                     if (data.status === 'created' && data.token) {
-                        hawalaTokenOutput.value = data.token;
-                        addLog(`💙 Hawala token created for ${amount} BTC → ${receiver.substring(0,10)}...`, 'success');
-                        showToast('🩶 Token generated! Copy and send it.', 3000);
+                        lastGeneratedToken = data.token;
+                        tokenRefDisplay.textContent = data.token;
+                        addLog(`💸 Sent ${amount} BTC to ${receiver.substring(0,12)}... (Token generated)`, 'success');
+                        showToast(`✅ Token created! Copy it and send to receiver.`, 4000);
+                        // Optionally clear fields after success
+                        // payeeAddress.value = '';
+                        // sendAmount.value = '';
                     } else {
-                        addLog('❌ Failed to create token: ' + (data.reason || 'unknown'), 'error');
-                        showToast('❌ Token generation failed.', 2500);
+                        addLog('❌ Send failed: ' + (data.reason || 'unknown'), 'error');
+                        showToast('❌ Transaction failed.', 2500);
                     }
                 } catch (err) {
-                    addLog('❌ Generate error: ' + err.message, 'error');
+                    addLog('❌ Send error: ' + err.message, 'error');
                     showToast('⚠️ Cannot reach backend.', 2500);
                 }
             }
 
-            // ---- Copy Hawala Token ----
-            function copyHawalaToken() {
-                const token = hawalaTokenOutput.value;
-                if (!token) { showToast('❌ No token to copy.', 1500); return; }
-                navigator.clipboard.writeText(token).then(() => {
-                    showToast('📋 Token copied!', 1500);
-                }).catch(() => {
-                    hawalaTokenOutput.select();
-                    document.execCommand('copy');
-                    showToast('📋 Token copied!', 1500);
-                });
-            }
-
-            // ---- VERIFY HAWALA TOKEN (Receive) ----
-            async function verifyHawala() {
-                const token = hawalaInput.value.trim();
-                if (!token) { showToast('📜 Paste a token first.', 2500); return; }
+            // ---- CLAIM (Accept Hawala Token) ----
+            async function claimMoney() {
+                const token = claimTokenInput.value.trim();
+                if (!token) { showToast('📜 Paste a token to claim.', 2500); return; }
                 if (!isOnline) { showToast('❌ Backend offline.', 3000); return; }
 
                 try {
@@ -598,23 +653,31 @@
                     });
                     const result = await response.json();
                     if (result.status === 'accepted') {
-                        addLog(`✅ Hawala ACCEPTED! +${result.amount || '?'} BTC pending.`, 'success');
-                        showToast(`🩶 Accepted ${result.amount || ''} BTC!`, 3000);
-                        hawalaInput.value = '';
-                        fetchStatus();
+                        addLog(`💰 Claimed! +${result.amount || '?'} BTC added to pending.`, 'success');
+                        showToast(`✅ Claimed ${result.amount || ''} BTC!`, 3000);
+                        claimTokenInput.value = '';
+                        fetchStatus(); // refresh balance immediately
                     } else {
-                        addLog('❌ Hawala rejected: ' + (result.reason || 'invalid'), 'error');
-                        showToast('❌ Invalid Hawala token.', 3000);
+                        addLog('❌ Claim rejected: ' + (result.reason || 'invalid token'), 'error');
+                        showToast('❌ Invalid token.', 3000);
                     }
                 } catch (err) {
-                    addLog('❌ Verify error: ' + err.message, 'error');
+                    addLog('❌ Claim error: ' + err.message, 'error');
                     showToast('⚠️ Cannot reach backend.', 2500);
                 }
             }
 
-            function clearHawalaInput() {
-                hawalaInput.value = '';
-                showToast('🧹 Cleared.', 1200);
+            // ---- Clear Fields ----
+            function clearSend() {
+                payeeAddress.value = '';
+                sendAmount.value = '';
+                tokenRefDisplay.textContent = '📜 Token will appear here after sending...';
+                lastGeneratedToken = '';
+                showToast('🧹 Send form cleared.', 1200);
+            }
+            function clearClaim() {
+                claimTokenInput.value = '';
+                showToast('🧹 Claim form cleared.', 1200);
             }
 
             // ---- Polling ----
@@ -626,17 +689,13 @@
             // ---- Events ----
             sweepBtn.addEventListener('click', startSweep);
             refreshBtn.addEventListener('click', function() { fetchStatus(); showToast('🔄 Refreshed.', 1000); });
-            generateBtn.addEventListener('click', generateHawala);
-            copyHawalaBtn.addEventListener('click', copyHawalaToken);
-            verifyHawalaBtn.addEventListener('click', verifyHawala);
-            clearHawalaBtn.addEventListener('click', clearHawalaInput);
-
-            hawalaInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); verifyHawala(); }
-            });
+            sendBtn.addEventListener('click', sendMoney);
+            clearSendBtn.addEventListener('click', clearSend);
+            claimBtn.addEventListener('click', claimMoney);
+            clearClaimBtn.addEventListener('click', clearClaim);
 
             // ---- Start ----
-            addLog('🩶 Khuti front-end loaded. Polling backend...', 'info');
+            addLog('🩶 Khuti Bank loaded. Polling backend...', 'info');
             pollLoop();
 
         })();
