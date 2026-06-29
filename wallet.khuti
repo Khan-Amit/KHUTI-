@@ -1,0 +1,7 @@
+{
+  "hawala_ledger": {
+    "pending_outgoing": [ /* Vouchers you've given out, not yet claimed */ ],
+    "pending_incoming": [ /* Vouchers given to you, not yet swept */ ],
+    "settled": [ /* Completed offline trades */ ]
+  }
+}
