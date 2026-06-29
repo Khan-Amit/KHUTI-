@@ -8,38 +8,26 @@
         /* ============================================================
            KHUTI™ – Proprietary Front-End Interface
            Copyright (c) 2026 Seliim Ahmed. All rights reserved.
-           Unauthorized use, reproduction, or distribution is strictly prohibited.
-           Email: amit.khanna.1082@gmail.com
            ============================================================ */
 
         /* ===== GLOBAL RESET & THEME 🩶💙 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            /* 🩶 Light Steel Grey Base */
             --bg-primary: #121212;
             --bg-secondary: #1a1a1c;
             --bg-card: #222224;
             --border-color: #3a3a3c;
             --text-primary: #e8e8ea;
-            --text-secondary: #b0bec5;  /* 🩶 Light Steel Grey */
+            --text-secondary: #b0bec5;
             --text-accent: #8e9eab;
-
-            /* 💙 Sky Blue Accents */
             --sky-blue: #81d4fa;
             --sky-blue-dark: #4fc3f7;
             --sky-blue-light: #b3e5fc;
             --sky-blue-glow: #4fc3f755;
-
-            /* Component Colors */
             --color-onchain: var(--sky-blue);
             --color-hawala: var(--sky-blue-light);
             --color-hashrate: var(--sky-blue-dark);
             --color-block: #90a4ae;
-
             --font-mono: 'Courier New', 'Fira Code', monospace;
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
             --radius: 16px;
@@ -56,26 +44,19 @@
             margin: 0;
         }
 
-        /* ===== MAIN DASHBOARD CARD ===== */
         .khuti-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
             padding: 28px 24px;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             box-shadow: var(--shadow);
             transition: border-color 0.3s;
         }
-        .khuti-card.online {
-            border-color: var(--sky-blue-dark);
-            box-shadow: 0 0 30px var(--sky-blue-glow);
-        }
-        .khuti-card.offline {
-            border-color: #5a4a4a;
-        }
+        .khuti-card.online { border-color: var(--sky-blue-dark); box-shadow: 0 0 30px var(--sky-blue-glow); }
+        .khuti-card.offline { border-color: #5a4a4a; }
 
-        /* ===== HEADER ===== */
         .khuti-header {
             display: flex;
             justify-content: space-between;
@@ -84,37 +65,16 @@
             padding-bottom: 12px;
             margin-bottom: 20px;
         }
-        .khuti-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-        .khuti-title span {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-left: 8px;
-        }
-        .khuti-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
+        .khuti-title { font-size: 28px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.5px; }
+        .khuti-title span { font-size: 16px; color: var(--text-secondary); font-weight: 400; margin-left: 8px; }
+        .khuti-status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
         .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+            width: 10px; height: 10px; border-radius: 50%;
             background: var(--sky-blue-dark);
             box-shadow: 0 0 12px var(--sky-blue-glow);
             transition: 0.3s;
         }
-        .status-dot.offline {
-            background: #6a4a4a;
-            box-shadow: 0 0 12px #6a4a4a88;
-        }
+        .status-dot.offline { background: #6a4a4a; box-shadow: 0 0 12px #6a4a4a88; }
         .status-dot.sweeping {
             background: var(--sky-blue);
             box-shadow: 0 0 24px var(--sky-blue-glow);
@@ -126,7 +86,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* ===== BALANCE ROWS ===== */
         .khuti-row {
             display: flex;
             justify-content: space-between;
@@ -134,51 +93,19 @@
             padding: 10px 0;
             border-bottom: 1px solid #2a2a2c;
         }
-        .khuti-row:last-of-type {
-            border-bottom: none;
-        }
-        .khuti-label {
-            color: var(--text-secondary);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .khuti-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            word-break: break-all;
-            text-align: right;
-        }
-        .khuti-value.address {
-            font-size: 13px;
-            color: var(--text-accent);
-            font-weight: 400;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .khuti-value.address:hover {
-            color: var(--sky-blue);
-        }
+        .khuti-row:last-of-type { border-bottom: none; }
+        .khuti-label { color: var(--text-secondary); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .khuti-value { font-size: 18px; font-weight: 600; color: var(--text-primary); word-break: break-all; text-align: right; }
+        .khuti-value.address { font-size: 13px; color: var(--text-accent); font-weight: 400; cursor: pointer; transition: color 0.2s; }
+        .khuti-value.address:hover { color: var(--sky-blue); }
+        .khuti-value.sky { color: var(--color-onchain); }
+        .khuti-value.steel { color: var(--color-hawala); }
+        .khuti-value.total { color: #ffffff; font-size: 22px; text-shadow: 0 0 30px var(--sky-blue-glow); }
+        .khuti-value.hashrate { color: var(--color-hashrate); }
+        .khuti-value.block { color: var(--color-block); }
 
-        /* 🩶💙 Color overrides */
-        .khuti-value.sky { color: var(--color-onchain); }         /* 💙 On-Chain */
-        .khuti-value.steel { color: var(--color-hawala); }        /* 🩶 Hawala (Light Steel Blue) */
-        .khuti-value.total {
-            color: #ffffff;
-            font-size: 22px;
-            text-shadow: 0 0 30px var(--sky-blue-glow);
-        }
-        .khuti-value.hashrate { color: var(--color-hashrate); }   /* 💙 Hashrate */
-        .khuti-value.block { color: var(--color-block); }         /* 🩶 Block */
+        .khuti-divider { border-top: 2px solid var(--border-color); margin: 8px 0 16px 0; }
 
-        /* ===== DIVIDER ===== */
-        .khuti-divider {
-            border-top: 2px solid var(--border-color);
-            margin: 8px 0 16px 0;
-        }
-
-        /* ===== DIGITAL WATCH ===== */
         .khuti-watch {
             background: #0a0a0c;
             border: 1px solid #2a2a2c;
@@ -193,18 +120,9 @@
             font-variant-numeric: tabular-nums;
             transition: color 0.3s;
         }
-        .khuti-watch.active {
-            color: var(--sky-blue);
-            text-shadow: 0 0 24px var(--sky-blue-glow);
-        }
+        .khuti-watch.active { color: var(--sky-blue); text-shadow: 0 0 24px var(--sky-blue-glow); }
 
-        /* ===== BUTTONS ===== */
-        .khuti-btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 8px;
-        }
+        .khuti-btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
         .khuti-btn {
             background: #2a2a2c;
             border: 1px solid var(--border-color);
@@ -220,87 +138,102 @@
             text-align: center;
             letter-spacing: 0.5px;
         }
-        .khuti-btn:hover {
-            background: #353538;
-            border-color: var(--sky-blue-dark);
-            color: var(--sky-blue);
-        }
-        .khuti-btn:active {
-            transform: scale(0.97);
-        }
+        .khuti-btn:hover { background: #353538; border-color: var(--sky-blue-dark); color: var(--sky-blue); }
+        .khuti-btn:active { transform: scale(0.97); }
         .khuti-btn.primary {
             background: #1a2a3a;
             border-color: var(--sky-blue-dark);
             color: var(--sky-blue);
         }
-        .khuti-btn.primary:hover {
-            background: #1a3a4a;
-            border-color: var(--sky-blue);
-            box-shadow: 0 0 20px var(--sky-blue-glow);
-        }
-        .khuti-btn.primary:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .khuti-btn.secondary {
-            background: #1a1a2a;
-            border-color: #3a3a5a;
-            color: var(--text-secondary);
-        }
-        .khuti-btn.secondary:hover {
-            background: #2a2a3a;
-            border-color: var(--sky-blue-dark);
-            color: var(--sky-blue);
-        }
+        .khuti-btn.primary:hover { background: #1a3a4a; border-color: var(--sky-blue); box-shadow: 0 0 20px var(--sky-blue-glow); }
+        .khuti-btn.primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+        .khuti-btn.secondary { background: #1a1a2a; border-color: #3a3a5a; color: var(--text-secondary); }
+        .khuti-btn.secondary:hover { background: #2a2a3a; border-color: var(--sky-blue-dark); color: var(--sky-blue); }
 
-        /* ===== HAWALA INPUT ===== */
-        .khuti-hawala-input {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-            padding: 12px;
+        /* ===== HAWALA TRANSFER SECTION ===== */
+        .hawala-section {
+            margin-top: 18px;
+            padding: 16px;
             background: #0e0e10;
-            border-radius: 10px;
-            border: 1px dashed #3a3a3c;
+            border-radius: 12px;
+            border: 1px solid #2a2a2c;
         }
-        .khuti-hawala-input textarea {
+        .hawala-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--sky-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hawala-sub {
             background: #141416;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--sky-blue-dark);
+        }
+        .hawala-sub:last-child { margin-bottom: 0; }
+        .hawala-sub .sub-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .hawala-input-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .hawala-input-row input {
+            flex: 1;
+            min-width: 120px;
+            background: #1a1a1c;
             border: 1px solid #2a2a2c;
             color: var(--text-primary);
-            font-family: var(--font-mono);
-            font-size: 12px;
-            padding: 10px;
+            padding: 10px 12px;
             border-radius: 6px;
-            resize: vertical;
-            min-height: 60px;
-            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 14px;
         }
-        .khuti-hawala-input textarea:focus {
+        .hawala-input-row input:focus {
             outline: none;
             border-color: var(--sky-blue-dark);
             box-shadow: 0 0 12px var(--sky-blue-glow);
         }
-        .khuti-hawala-input .btn-row {
-            display: flex;
-            gap: 8px;
-        }
-        .khuti-hawala-input .btn-row .khuti-btn {
-            padding: 10px;
+        .hawala-input-row .khuti-btn {
+            flex: 0 0 auto;
+            padding: 10px 20px;
             font-size: 13px;
-            flex: 1;
+            width: auto;
         }
+        .hawala-token-output {
+            background: #0a0a0c;
+            border: 1px dashed #3a3a3c;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: var(--sky-blue-light);
+            word-break: break-all;
+            min-height: 40px;
+            margin-top: 6px;
+            font-family: var(--font-mono);
+            resize: none;
+            width: 100%;
+        }
+        .hawala-token-output:focus { outline: none; border-color: var(--sky-blue-dark); }
+
         .khuti-small-label {
             font-size: 11px;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .khuti-small-label .icon {
-            color: var(--sky-blue);
-        }
+        .khuti-small-label .icon { color: var(--sky-blue); }
 
         /* ===== LOG ===== */
         .khuti-log {
@@ -316,32 +249,16 @@
             font-family: var(--font-mono);
             line-height: 1.6;
         }
-        .khuti-log::-webkit-scrollbar {
-            width: 4px;
-        }
-        .khuti-log::-webkit-scrollbar-track {
-            background: #0a0a0c;
-        }
-        .khuti-log::-webkit-scrollbar-thumb {
-            background: var(--sky-blue-dark);
-            border-radius: 4px;
-        }
-        .khuti-log .log-entry {
-            border-bottom: 1px dotted #1a1a1c;
-            padding: 2px 0;
-        }
-        .khuti-log .log-entry:last-child {
-            border-bottom: none;
-        }
-        .khuti-log .time {
-            color: #4a5a6a;
-            margin-right: 8px;
-        }
+        .khuti-log::-webkit-scrollbar { width: 4px; }
+        .khuti-log::-webkit-scrollbar-track { background: #0a0a0c; }
+        .khuti-log::-webkit-scrollbar-thumb { background: var(--sky-blue-dark); border-radius: 4px; }
+        .khuti-log .log-entry { border-bottom: 1px dotted #1a1a1c; padding: 2px 0; }
+        .khuti-log .log-entry:last-child { border-bottom: none; }
+        .khuti-log .time { color: #4a5a6a; margin-right: 8px; }
         .khuti-log .success { color: var(--sky-blue-light); }
         .khuti-log .info { color: var(--sky-blue); }
         .khuti-log .error { color: #d47a7a; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             .khuti-card { padding: 20px 16px; }
             .khuti-title { font-size: 22px; }
@@ -350,9 +267,10 @@
             .khuti-value.total { font-size: 18px; }
             .khuti-watch { font-size: 18px; padding: 10px 12px; }
             .khuti-btn { font-size: 14px; padding: 12px 16px; }
+            .hawala-input-row { flex-direction: column; }
+            .hawala-input-row .khuti-btn { width: 100%; }
         }
 
-        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -371,23 +289,17 @@
             pointer-events: none;
             font-family: var(--font-mono);
         }
-        .toast.show {
-            opacity: 1;
-        }
+        .toast.show { opacity: 1; }
     </style>
 </head>
 <body>
 
-    <!-- ===== TOAST ===== -->
     <div id="toast" class="toast">🩶 Ready</div>
 
-    <!-- ===== MAIN CARD ===== -->
     <div class="khuti-card" id="khutiCard">
         <!-- HEADER -->
         <div class="khuti-header">
-            <div class="khuti-title">
-                🩶 KHUTI <span>v2.0</span>
-            </div>
+            <div class="khuti-title">🩶 KHUTI <span>v2.0</span></div>
             <div class="khuti-status">
                 <span id="statusLabel">Online</span>
                 <span class="status-dot" id="statusDot"></span>
@@ -400,7 +312,7 @@
             <span class="khuti-value address" id="address" title="Click to copy">Loading...</span>
         </div>
 
-        <!-- BALANCES (🩶💙 Theme) -->
+        <!-- BALANCES -->
         <div class="khuti-row">
             <span class="khuti-label">💙 On‑Chain</span>
             <span class="khuti-value sky" id="onchain">0.00000000 BTC</span>
@@ -434,13 +346,32 @@
             <button class="khuti-btn secondary" id="refreshBtn">🔄 Refresh Dashboard</button>
         </div>
 
-        <!-- HAWALA TOKEN INPUT -->
-        <div class="khuti-hawala-input">
-            <span class="khuti-small-label"><span class="icon">📜</span> Accept Hawala Token (Paste Below)</span>
-            <textarea id="hawalaTokenInput" placeholder="Paste Base64 Hawala token here..."></textarea>
-            <div class="btn-row">
-                <button class="khuti-btn" id="verifyHawalaBtn" style="background:#1a2a3a;border-color:var(--sky-blue-dark);color:var(--sky-blue);">✅ Verify & Accept</button>
-                <button class="khuti-btn" id="clearHawalaBtn" style="background:#2a1a1a;border-color:#4a2a2a;color:#b07a7a;">✖ Clear</button>
+        <!-- ========================================================== -->
+        <!-- ===== HAWALA TRANSFER (HUNDI-STYLE SETTLEMENT) ===== -->
+        <!-- ========================================================== -->
+        <div class="hawala-section">
+            <div class="hawala-section-title">📜 Hawala Transfer (Hundi Settlement)</div>
+
+            <!-- SEND HAWALA (Create Token) -->
+            <div class="hawala-sub">
+                <span class="sub-label">💙 1. Create Token (Send)</span>
+                <div class="hawala-input-row">
+                    <input type="text" id="hawalaReceiver" placeholder="Receiver Address (1...)" style="flex:2;">
+                    <input type="text" id="hawalaAmount" placeholder="Amount (BTC)" style="flex:1;">
+                    <button class="khuti-btn primary" id="generateHawalaBtn" style="flex:0 0 auto;">🔖 Generate</button>
+                </div>
+                <textarea class="hawala-token-output" id="hawalaTokenOutput" rows="2" readonly placeholder="Generated Hawala token will appear here..."></textarea>
+                <button class="khuti-btn secondary" id="copyHawalaBtn" style="margin-top:6px; padding:8px; font-size:12px;">📋 Copy Token</button>
+            </div>
+
+            <!-- RECEIVE HAWALA (Accept Token) -->
+            <div class="hawala-sub">
+                <span class="sub-label">🩶 2. Accept Token (Receive)</span>
+                <textarea id="hawalaTokenInput" rows="2" placeholder="Paste Base64 Hawala token here to accept..."></textarea>
+                <div class="hawala-input-row" style="margin-top:6px;">
+                    <button class="khuti-btn" id="verifyHawalaBtn" style="background:#1a2a3a;border-color:var(--sky-blue-dark);color:var(--sky-blue);">✅ Verify & Accept</button>
+                    <button class="khuti-btn" id="clearHawalaBtn" style="background:#2a1a1a;border-color:#4a2a2a;color:#b07a7a;">✖ Clear</button>
+                </div>
             </div>
         </div>
 
@@ -469,9 +400,19 @@
             const clockEl = document.getElementById('clock');
             const sweepBtn = document.getElementById('sweepBtn');
             const refreshBtn = document.getElementById('refreshBtn');
+
+            // Hawala Send
+            const generateBtn = document.getElementById('generateHawalaBtn');
+            const hawalaReceiver = document.getElementById('hawalaReceiver');
+            const hawalaAmount = document.getElementById('hawalaAmount');
+            const hawalaTokenOutput = document.getElementById('hawalaTokenOutput');
+            const copyHawalaBtn = document.getElementById('copyHawalaBtn');
+
+            // Hawala Receive
             const verifyHawalaBtn = document.getElementById('verifyHawalaBtn');
             const clearHawalaBtn = document.getElementById('clearHawalaBtn');
             const hawalaInput = document.getElementById('hawalaTokenInput');
+
             const logContainer = document.getElementById('logContainer');
             const toastEl = document.getElementById('toast');
 
@@ -485,9 +426,7 @@
                 toastEl.textContent = msg;
                 toastEl.classList.add('show');
                 clearTimeout(toastTimeout);
-                toastTimeout = setTimeout(() => {
-                    toastEl.classList.remove('show');
-                }, duration);
+                toastTimeout = setTimeout(() => { toastEl.classList.remove('show'); }, duration);
             }
 
             // ---- Log ----
@@ -509,7 +448,7 @@
                 const text = this.textContent.trim();
                 if (text && text !== 'Loading...') {
                     navigator.clipboard.writeText(text).then(() => {
-                        showToast('🩶 Address copied to clipboard!', 1500);
+                        showToast('🩶 Address copied!', 1500);
                     }).catch(() => {
                         const range = document.createRange();
                         range.selectNode(this);
@@ -572,10 +511,7 @@
             // ---- Start Sweep ----
             async function startSweep() {
                 if (isSweeping) return;
-                if (!isOnline) {
-                    showToast('❌ Backend is offline. Cannot sweep.', 3000);
-                    return;
-                }
+                if (!isOnline) { showToast('❌ Backend offline.', 3000); return; }
 
                 isSweeping = true;
                 sweepBtn.disabled = true;
@@ -583,7 +519,7 @@
                 statusDot.className = 'status-dot sweeping';
                 statusLabel.textContent = 'Sweeping';
                 addLog('⚡ Starting vintage UTXO sweep...', 'info');
-                showToast('🩶 Sweep started! Check logs.', 2000);
+                showToast('🩶 Sweep started!', 2000);
 
                 try {
                     const response = await fetch('http://localhost:8080/sweep', { method: 'POST' });
@@ -602,35 +538,68 @@
                     isSweeping = false;
                     sweepBtn.disabled = false;
                     sweepBtn.textContent = '⚡ Start Sweeping UTXOs';
-                    if (isOnline) {
-                        statusDot.className = 'status-dot';
-                        statusLabel.textContent = 'Online';
-                    }
+                    if (isOnline) { statusDot.className = 'status-dot'; statusLabel.textContent = 'Online'; }
                 }, 5000);
             }
 
-            // ---- Verify Hawala ----
-            async function verifyHawala() {
-                const token = hawalaInput.value.trim();
-                if (!token) {
-                    showToast('📜 Please paste a Hawala token first.', 2500);
-                    return;
-                }
-                if (!isOnline) {
-                    showToast('❌ Backend offline. Cannot verify.', 3000);
-                    return;
-                }
+            // ---- GENERATE HAWALA TOKEN (Send) ----
+            async function generateHawala() {
+                const receiver = hawalaReceiver.value.trim();
+                const amount = parseFloat(hawalaAmount.value.trim());
+                if (!receiver) { showToast('❌ Enter a receiver address.', 2500); return; }
+                if (isNaN(amount) || amount <= 0) { showToast('❌ Enter a valid amount.', 2500); return; }
+                if (!isOnline) { showToast('❌ Backend offline.', 3000); return; }
 
                 try {
-                    const response = await fetch('http://localhost:8080/hawala', {
+                    const response = await fetch('http://localhost:8080/hawala/create', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ receiver: receiver, amount: amount })
+                    });
+                    const data = await response.json();
+                    if (data.status === 'created' && data.token) {
+                        hawalaTokenOutput.value = data.token;
+                        addLog(`💙 Hawala token created for ${amount} BTC → ${receiver.substring(0,10)}...`, 'success');
+                        showToast('🩶 Token generated! Copy and send it.', 3000);
+                    } else {
+                        addLog('❌ Failed to create token: ' + (data.reason || 'unknown'), 'error');
+                        showToast('❌ Token generation failed.', 2500);
+                    }
+                } catch (err) {
+                    addLog('❌ Generate error: ' + err.message, 'error');
+                    showToast('⚠️ Cannot reach backend.', 2500);
+                }
+            }
+
+            // ---- Copy Hawala Token ----
+            function copyHawalaToken() {
+                const token = hawalaTokenOutput.value;
+                if (!token) { showToast('❌ No token to copy.', 1500); return; }
+                navigator.clipboard.writeText(token).then(() => {
+                    showToast('📋 Token copied!', 1500);
+                }).catch(() => {
+                    hawalaTokenOutput.select();
+                    document.execCommand('copy');
+                    showToast('📋 Token copied!', 1500);
+                });
+            }
+
+            // ---- VERIFY HAWALA TOKEN (Receive) ----
+            async function verifyHawala() {
+                const token = hawalaInput.value.trim();
+                if (!token) { showToast('📜 Paste a token first.', 2500); return; }
+                if (!isOnline) { showToast('❌ Backend offline.', 3000); return; }
+
+                try {
+                    const response = await fetch('http://localhost:8080/hawala/verify', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ token: token })
                     });
                     const result = await response.json();
                     if (result.status === 'accepted') {
-                        addLog('✅ Hawala ACCEPTED! +' + (result.amount || '?') + ' BTC pending.', 'success');
-                        showToast('🩶 Hawala accepted!', 2500);
+                        addLog(`✅ Hawala ACCEPTED! +${result.amount || '?'} BTC pending.`, 'success');
+                        showToast(`🩶 Accepted ${result.amount || ''} BTC!`, 3000);
                         hawalaInput.value = '';
                         fetchStatus();
                     } else {
@@ -638,14 +607,14 @@
                         showToast('❌ Invalid Hawala token.', 3000);
                     }
                 } catch (err) {
-                    addLog('❌ Hawala verify error: ' + err.message, 'error');
+                    addLog('❌ Verify error: ' + err.message, 'error');
                     showToast('⚠️ Cannot reach backend.', 2500);
                 }
             }
 
             function clearHawalaInput() {
                 hawalaInput.value = '';
-                showToast('🧹 Hawala input cleared.', 1200);
+                showToast('🧹 Cleared.', 1200);
             }
 
             // ---- Polling ----
@@ -656,18 +625,14 @@
 
             // ---- Events ----
             sweepBtn.addEventListener('click', startSweep);
-            refreshBtn.addEventListener('click', function() {
-                fetchStatus();
-                showToast('🔄 Refreshed.', 1000);
-            });
+            refreshBtn.addEventListener('click', function() { fetchStatus(); showToast('🔄 Refreshed.', 1000); });
+            generateBtn.addEventListener('click', generateHawala);
+            copyHawalaBtn.addEventListener('click', copyHawalaToken);
             verifyHawalaBtn.addEventListener('click', verifyHawala);
             clearHawalaBtn.addEventListener('click', clearHawalaInput);
 
             hawalaInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    verifyHawala();
-                }
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); verifyHawala(); }
             });
 
             // ---- Start ----
