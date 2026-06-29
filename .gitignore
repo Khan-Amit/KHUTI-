@@ -1,23 +1,82 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
+
+---
+
+### 📄 File 3: `.gitignore` (Protects Your Binary & Vault)
+
+Copy this as `.gitignore` (note the leading dot).
+
+```gitignore
+# ========================================
+# KHUTI™ – GIT IGNORE
+# Protects compiled binaries, vault files,
+# IDE cruft, and system garbage.
+# ========================================
+
+# --- Compiled Binaries ---
+khuti
+khuti.exe
+*.out
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# --- Build Directories ---
+build/
+bin/
+obj/
+lib/
+.deps/
+__pycache__/
+
+# --- Khuti Vault Files (CRITICAL) ---
+*.khuti
+*.khuti.bak
+*.wallet
+*.vault
+*.encrypted
+
+# --- IDE & Editor Files ---
 .vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-files
-*.bclicense
-*.flf
-#Test results file
-TestResults.xml
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.log
+.DS_Store
+Thumbs.db
+
+# --- Temporary & System Files ---
+*.tmp
+*.temp
+*.core
+*.pid
+*.lock
+*.cache
+
+# --- Backup Copies ---
+*.backup
+*.old
+*.orig
+
+# --- Compiler Dependencies (if using CMake) ---
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# --- GitHub / Cloud ---
+.gitattributes
+.github/
+.gitmodules
+
+# --- No accidental uploads of sensitive data ---
+*.pem
+*.key
+*.crt
+*.pub
+*.priv
